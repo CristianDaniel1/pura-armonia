@@ -12,4 +12,8 @@ import { SocialLinks } from '../../shared/social-links/social-links';
 export class Footer {
   protected readonly t = inject(I18n).t;
   protected readonly year = new Date().getFullYear();
+  protected readonly developer = {
+    name: 'Cristian Daniel',
+    url: 'https://portfolio-cristiandev.vercel.app/',
+  };
 }

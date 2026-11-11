@@ -157,6 +157,7 @@ export const pt: Dict = {
     tagline: 'Cumbia boliviana com sabor, de São Paulo para toda a América Latina.',
     rights: 'Todos os direitos reservados.',
     top: 'Voltar ao topo',
+    developedBy: 'Desenvolvido por',
   },
   floatWhatsapp: 'Fale com a gente no WhatsApp',
 };

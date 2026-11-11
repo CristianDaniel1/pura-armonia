@@ -164,6 +164,7 @@ export const es = {
     tagline: 'Cumbia boliviana con sabor, desde São Paulo para toda Latinoamérica.',
     rights: 'Todos los derechos reservados.',
     top: 'Volver arriba',
+    developedBy: 'Desarrollado por',
   },
   floatWhatsapp: 'Escríbenos por WhatsApp',
 };
