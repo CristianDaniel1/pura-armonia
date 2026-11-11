@@ -1,0 +1,93 @@
+<section
+  id="home"
+  class="relative isolate flex min-h-svh flex-col overflow-hidden lg:max-h-[1100px]"
+>
+  <!-- Foto de fondo -->
+  <div class="absolute inset-0 -z-10 overflow-hidden lg:left-auto lg:w-[64%]" aria-hidden="true">
+    <img
+      src="images/hero.jpg"
+      alt=""
+      fetchpriority="high"
+      class="size-full animate-ken-burns object-cover object-[52%_center]"
+    />
+    <div
+      class="absolute inset-0 bg-linear-to-t from-night via-night/75 to-night/20 lg:hidden"
+    ></div>
+    <div
+      class="absolute inset-0 hidden bg-linear-to-r from-night via-night/40 to-transparent lg:block"
+    ></div>
+    <div
+      class="absolute inset-x-0 bottom-0 hidden h-48 bg-linear-to-t from-night to-transparent lg:block"
+    ></div>
+  </div>
+  <!-- Brillo vino -->
+  <div
+    class="pointer-events-none absolute -top-40 -left-40 -z-10 size-[36rem] rounded-full bg-wine/30 blur-[140px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="container-page flex flex-1 flex-col justify-end pt-32 pb-10 lg:justify-center lg:pb-0"
+  >
+    <p class="eyebrow animate-fade-up" style="animation-delay: 0.1s">{{ t().hero.eyebrow }}</p>
+
+    <h1 class="flex flex-col">
+      <span
+        class="animate-rise font-script text-5xl text-wine-bright sm:text-6xl"
+        style="animation-delay: 0.2s"
+      >
+        Agrupación
+      </span>
+      <span
+        class="-mt-2 animate-rise text-7xl leading-[0.95] font-medium sm:text-8xl lg:text-[8.5rem]"
+        style="animation-delay: 0.3s"
+      >
+        Pura
+      </span>
+      <span
+        class="animate-rise text-7xl leading-[0.95] font-medium text-gold-soft italic sm:text-8xl lg:text-[8.5rem]"
+        style="animation-delay: 0.4s"
+      >
+        Armonía
+      </span>
+    </h1>
+
+    <p
+      class="mt-5 flex animate-fade-up items-center gap-4 text-xs font-bold tracking-[0.5em] text-gold uppercase"
+      style="animation-delay: 0.5s"
+    >
+      <span class="h-px w-10 bg-gold/60" aria-hidden="true"></span>
+      con sabor
+    </p>
+
+    <p class="mt-7 max-w-md animate-fade-up text-lg text-muted" style="animation-delay: 0.6s">
+      {{ t().hero.lead }}
+    </p>
+
+    <div class="mt-9 flex animate-fade-up flex-wrap gap-3" style="animation-delay: 0.7s">
+      <a href="#music" class="btn btn-primary">
+        <app-icon name="play" class="size-4" />
+        {{ t().hero.watch }}
+      </a>
+      <a href="#contact" class="btn btn-ghost">{{ t().hero.hire }}</a>
+    </div>
+  </div>
+
+  <!-- Redes y scroll -->
+  <div
+    class="container-page relative flex animate-fade-up items-end justify-between pb-8 lg:pb-10"
+    style="animation-delay: 0.9s"
+  >
+    <app-social-links />
+
+    <a
+      href="#about"
+      class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 lg:bottom-10 text-[0.65rem] font-bold tracking-[0.3em] text-dim uppercase sm:flex"
+    >
+      {{ t().hero.scroll }}
+      <span class="relative h-12 w-px overflow-hidden bg-line">
+        <span class="absolute inset-0 animate-scroll-line bg-gold"></span>
+      </span>
+    </a>
+  </div>
+</section>

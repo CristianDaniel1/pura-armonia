@@ -1,0 +1,25 @@
+<footer class="border-t border-line bg-night-2">
+  <div class="container-page flex flex-col items-center gap-8 py-14 text-center">
+    <a href="#home" class="flex flex-col items-center leading-none">
+      <span class="font-script text-2xl text-wine-bright">Agrupación</span>
+      <span class="font-display text-4xl font-semibold italic">Pura Armonía</span>
+      <span class="mt-2 text-[0.65rem] font-bold tracking-[0.5em] text-gold uppercase"
+        >con sabor</span
+      >
+    </a>
+
+    <p class="max-w-md text-muted">{{ t().footer.tagline }}</p>
+
+    <app-social-links />
+
+    <div
+      class="flex w-full flex-col items-center justify-between gap-4 border-t border-line pt-8 text-sm text-dim sm:flex-row"
+    >
+      <p>© {{ year }} Agrupación Pura Armonía. {{ t().footer.rights }}</p>
+      <a href="#home" class="inline-flex items-center gap-2 transition hover:text-gold">
+        {{ t().footer.top }}
+        <app-icon name="arrow-up" class="size-4" />
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,15 @@
+<article
+  class="group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/60 p-8 transition duration-500 ease-elegant hover:-translate-y-1 hover:border-gold/40 hover:bg-surface"
+>
+  <div
+    class="pointer-events-none absolute -top-20 -right-20 size-48 rounded-full bg-wine/0 blur-3xl transition duration-700 group-hover:bg-wine/30"
+    aria-hidden="true"
+  ></div>
+  <span
+    class="relative flex size-14 items-center justify-center rounded-full border border-gold/40 text-gold"
+  >
+    <app-icon [name]="icon()" class="size-6" />
+  </span>
+  <h3 class="relative mt-6 text-3xl">{{ title() }}</h3>
+  <p class="relative mt-3 text-muted">{{ text() }}</p>
+</article>

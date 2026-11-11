@@ -1,0 +1,16 @@
+<ul class="flex gap-2">
+  @for (link of links; track link.name) {
+    <li>
+      <a
+        [href]="link.url"
+        target="_blank"
+        rel="noopener"
+        [attr.aria-label]="link.name + ' ' + t().newTab"
+        [title]="link.name"
+        class="flex size-10 items-center justify-center rounded-full border border-line text-muted transition duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
+      >
+        <app-icon [name]="link.icon" class="size-4" />
+      </a>
+    </li>
+  }
+</ul>

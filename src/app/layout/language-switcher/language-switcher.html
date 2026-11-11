@@ -1,0 +1,19 @@
+<div
+  role="group"
+  [attr.aria-label]="i18n.t().nav.lang"
+  class="inline-flex h-10 items-center rounded-full border border-line-strong p-1 text-xs font-bold tracking-widest"
+>
+  @for (option of options; track option.lang) {
+    <button
+      type="button"
+      class="h-full min-w-9 rounded-full px-2.5 transition"
+      [class]="i18n.lang() === option.lang ? 'bg-gold/15 text-gold' : 'text-muted hover:text-ivory'"
+      [attr.aria-pressed]="i18n.lang() === option.lang"
+      [attr.lang]="option.lang"
+      [title]="option.name"
+      (click)="i18n.use(option.lang)"
+    >
+      {{ option.label }}
+    </button>
+  }
+</div>

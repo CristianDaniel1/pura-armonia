@@ -1,0 +1,23 @@
+<section id="contact" class="section overflow-hidden">
+  <div
+    class="pointer-events-none absolute top-1/3 -right-40 size-[32rem] rounded-full bg-wine/20 blur-[140px]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page relative grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5">
+      <app-section-heading
+        [eyebrow]="t().contact.eyebrow"
+        [title]="t().contact.title"
+        [lead]="t().contact.lead"
+      />
+      <div appReveal="100">
+        <app-contact-channels />
+      </div>
+    </div>
+
+    <div appReveal="200" class="lg:col-span-7 lg:pt-6">
+      <app-contact-form />
+    </div>
+  </div>
+</section>

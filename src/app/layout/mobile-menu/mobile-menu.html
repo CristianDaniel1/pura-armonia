@@ -1,0 +1,55 @@
+<dialog
+  #dialog
+  id="mobile-menu"
+  class="m-0 h-dvh max-h-none w-full max-w-none bg-night p-0 text-ivory opacity-0 transition-[opacity,display,overlay] transition-discrete duration-300 backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 lg:hidden"
+  [attr.aria-label]="t().nav.mobile"
+  (close)="onClosed()"
+>
+  <div class="flex h-full flex-col">
+    <!-- Barra superior (igual a la del header) -->
+    <div
+      class="container-page flex h-(--header-h) shrink-0 items-center justify-between gap-4 border-b border-line"
+    >
+      <a href="#home" class="flex flex-col leading-none" (click)="goTo('home')">
+        <span class="-mb-0.5 ml-0.5 font-script text-lg text-wine-bright">Agrupación</span>
+        <span class="font-display text-[1.6rem] font-semibold italic">Pura Armonía</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <app-language-switcher />
+        <button
+          type="button"
+          autofocus
+          class="inline-flex size-11 items-center justify-center rounded-full border border-line-strong"
+          [attr.aria-label]="t().nav.close"
+          (click)="close()"
+        >
+          <app-icon name="close" class="size-5" />
+        </button>
+      </div>
+    </div>
+
+    <nav
+      class="container-page flex flex-1 flex-col gap-8 overflow-y-auto pt-8 pb-12"
+      [attr.aria-label]="t().nav.mobile"
+    >
+      <ul>
+        @for (link of links(); track link.id) {
+          <li>
+            <a
+              [href]="'#' + link.id"
+              class="block border-b border-line py-4 font-display text-3xl transition-colors"
+              [class]="active() === link.id ? 'text-gold-soft' : 'text-ivory'"
+              [attr.aria-current]="active() === link.id ? 'location' : null"
+              (click)="goTo(link.id)"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+      <a href="#contact" class="btn btn-primary self-start" (click)="goTo('contact')">{{
+        t().nav.cta
+      }}</a>
+    </nav>
+  </div>
+</dialog>

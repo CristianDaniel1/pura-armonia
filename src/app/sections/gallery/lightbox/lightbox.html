@@ -1,0 +1,53 @@
+<dialog
+  #dialog
+  class="m-0 h-dvh max-h-none w-full max-w-none bg-transparent p-0 text-ivory opacity-0 transition-[opacity,display,overlay] transition-discrete duration-300 backdrop:bg-night/95 backdrop:backdrop-blur-sm open:opacity-100 starting:open:opacity-0"
+  [attr.aria-label]="alt()"
+  (close)="close()"
+  (keydown)="onKeydown($event)"
+>
+  @if (current(); as image) {
+    <div
+      class="relative flex size-full items-center justify-center p-4"
+      (click)="onBackdropClick($event)"
+    >
+      <button
+        type="button"
+        autofocus
+        class="absolute top-5 right-5 flex size-12 items-center justify-center rounded-full border border-line-strong bg-night/60 transition hover:border-gold hover:text-gold"
+        [attr.aria-label]="t().gallery.close"
+        (click)="close()"
+      >
+        <app-icon name="close" class="size-5" />
+      </button>
+
+      <figure class="flex flex-col items-center gap-4">
+        <img
+          [src]="image.src"
+          [alt]="alt()"
+          class="max-h-[80vh] max-w-full rounded-xl object-contain shadow-2xl"
+        />
+        <figcaption class="text-sm text-muted">
+          {{ alt() }} ·
+          <span aria-live="polite">{{ (index() ?? 0) + 1 }} / {{ images().length }}</span>
+        </figcaption>
+      </figure>
+
+      <button
+        type="button"
+        class="absolute top-1/2 left-3 flex size-12 -translate-y-1/2 items-center justify-center rounded-full border border-line-strong bg-night/60 transition hover:border-gold hover:text-gold sm:left-6"
+        [attr.aria-label]="t().gallery.prev"
+        (click)="step(-1)"
+      >
+        <app-icon name="chevron-left" class="size-5" />
+      </button>
+      <button
+        type="button"
+        class="absolute top-1/2 right-3 flex size-12 -translate-y-1/2 items-center justify-center rounded-full border border-line-strong bg-night/60 transition hover:border-gold hover:text-gold sm:right-6"
+        [attr.aria-label]="t().gallery.next"
+        (click)="step(1)"
+      >
+        <app-icon name="chevron-right" class="size-5" />
+      </button>
+    </div>
+  }
+</dialog>

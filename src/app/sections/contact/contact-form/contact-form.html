@@ -1,0 +1,84 @@
+<form
+  [formRoot]="contactForm"
+  class="grid gap-5 rounded-3xl border border-line bg-surface/70 p-6 shadow-2xl shadow-black/40 sm:grid-cols-2 sm:p-10"
+>
+  <div class="flex flex-col gap-2 sm:col-span-2">
+    <label for="contact-name" class="text-sm font-semibold text-ivory/90">
+      {{ t().contact.name }} <span aria-hidden="true">*</span>
+    </label>
+    <input
+      id="contact-name"
+      class="field"
+      type="text"
+      autocomplete="name"
+      [formField]="contactForm.name"
+      [attr.aria-invalid]="hasError(contactForm.name)"
+      [attr.aria-describedby]="hasError(contactForm.name) ? 'contact-name-error' : null"
+    />
+    <app-field-error [field]="contactForm.name" errorId="contact-name-error" />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label for="contact-type" class="text-sm font-semibold text-ivory/90">
+      {{ t().contact.type }} <span aria-hidden="true">*</span>
+    </label>
+    <select
+      id="contact-type"
+      class="field"
+      [formField]="contactForm.type"
+      [attr.aria-invalid]="hasError(contactForm.type)"
+      [attr.aria-describedby]="hasError(contactForm.type) ? 'contact-type-error' : null"
+    >
+      <option value="" disabled>{{ t().contact.typePlaceholder }}</option>
+      @for (type of t().contact.types; track type) {
+        <option [value]="type">{{ type }}</option>
+      }
+    </select>
+    <app-field-error [field]="contactForm.type" errorId="contact-type-error" />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label for="contact-date" class="text-sm font-semibold text-ivory/90">{{
+      t().contact.date
+    }}</label>
+    <input id="contact-date" class="field scheme-dark" type="date" [formField]="contactForm.date" />
+  </div>
+
+  <div class="flex flex-col gap-2 sm:col-span-2">
+    <label for="contact-place" class="text-sm font-semibold text-ivory/90">{{
+      t().contact.place
+    }}</label>
+    <input
+      id="contact-place"
+      class="field"
+      type="text"
+      autocomplete="address-level2"
+      [formField]="contactForm.place"
+      [attr.aria-invalid]="hasError(contactForm.place)"
+      [attr.aria-describedby]="hasError(contactForm.place) ? 'contact-place-error' : null"
+    />
+    <app-field-error [field]="contactForm.place" errorId="contact-place-error" />
+  </div>
+
+  <div class="flex flex-col gap-2 sm:col-span-2">
+    <label for="contact-message" class="text-sm font-semibold text-ivory/90">{{
+      t().contact.message
+    }}</label>
+    <textarea
+      id="contact-message"
+      class="field min-h-32 resize-y"
+      [formField]="contactForm.message"
+      [placeholder]="t().contact.messagePlaceholder"
+      [attr.aria-invalid]="hasError(contactForm.message)"
+      [attr.aria-describedby]="hasError(contactForm.message) ? 'contact-message-error' : null"
+    ></textarea>
+    <app-field-error [field]="contactForm.message" errorId="contact-message-error" />
+  </div>
+
+  <div class="sm:col-span-2">
+    <button type="submit" class="btn btn-primary w-full sm:w-auto">
+      <app-icon name="whatsapp" class="size-5" />
+      {{ t().contact.send }}
+    </button>
+  </div>
+</form>

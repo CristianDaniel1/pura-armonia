@@ -1,0 +1,265 @@
+@import 'tailwindcss';
+
+/*
+  Fuentes alojadas en el propio sitio (subconjunto latino: cubre español y
+  portugués). Evita la conexión a Google Fonts y acelera el primer render.
+  Licencia: SIL Open Font License.
+*/
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/great-vibes.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/manrope.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================
+   Pura Armonía — tema
+   Paleta inspirada en la banda: vino (camisas), azul noche
+   (logo) y dorado champagne (brillo de escenario).
+   ========================================================== */
+
+@theme {
+  --color-night: #0a0b14;
+  --color-night-2: #10121f;
+  --color-surface: #161829;
+  --color-surface-2: #1d2036;
+  --color-line: rgb(236 215 166 / 0.14);
+  --color-line-strong: rgb(236 215 166 / 0.32);
+
+  --color-wine: #8f1d3a;
+  --color-wine-bright: #c4314f;
+  --color-navy: #1b2a6b;
+  --color-gold: #d6b26a;
+  --color-gold-soft: #ecd7a6;
+
+  --color-ivory: #f4eee4;
+  --color-muted: #aeaabb;
+  /* Grises y rojo de error con contraste ≥ 4.5:1 en todos los fondos oscuros */
+  --color-dim: #8e8ba0;
+  --color-danger: #ec7088;
+
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-up: fade-up 1s var(--ease-elegant) both;
+  /* Solo movimiento, sin opacidad: para el título principal (no retrasa el LCP) */
+  --animate-rise: rise 1s var(--ease-elegant) both;
+  --animate-ken-burns: ken-burns 18s ease-out both;
+  --animate-scroll-line: scroll-line 2.2s var(--ease-elegant) infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(24px);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scroll-line {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    50% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    51% {
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --header-h: 76px;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+  }
+
+  /* Bloquea el scroll de fondo mientras haya un modal abierto (menú móvil o galería) */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-night font-sans leading-relaxed text-ivory antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-medium leading-[1.1] tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-wine text-white;
+  }
+
+  :focus-visible {
+    @apply rounded outline-2 outline-offset-4 outline-gold;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10;
+  }
+
+  .section {
+    @apply relative py-24 md:py-32 lg:py-36;
+  }
+
+  .eyebrow {
+    @apply mb-5 inline-flex items-center gap-3 text-xs font-bold tracking-[0.28em] text-gold uppercase;
+
+    &::before {
+      content: '';
+      @apply h-px w-8 bg-current;
+    }
+  }
+
+  .section-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+
+    em {
+      @apply text-gold-soft italic;
+    }
+  }
+
+  .section-lead {
+    @apply mt-5 text-lg text-muted;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full border border-transparent px-6 text-sm font-bold tracking-wider uppercase transition duration-300 ease-elegant hover:-translate-y-0.5;
+  }
+
+  .btn-primary {
+    @apply bg-linear-135 from-wine-bright to-wine text-white shadow-[0_10px_30px_-10px_rgb(196_49_79/0.6)] hover:shadow-[0_16px_40px_-12px_rgb(196_49_79/0.85)];
+  }
+
+  .btn-ghost {
+    @apply border-line-strong bg-white/[0.02] text-ivory hover:border-gold hover:text-gold-soft;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-[#1a1408] hover:bg-gold-soft;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-night-2 px-4 py-3 text-ivory transition placeholder:text-dim focus:border-gold focus:outline-none;
+  }
+}
+
+/*
+  Animación al hacer scroll (directiva appReveal).
+  La directiva solo oculta elementos que están debajo de la pantalla y
+  solo en el navegador, así el HTML pre-renderizado siempre es visible.
+*/
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-elegant),
+    transform 0.9s var(--ease-elegant);
+  transition-delay: var(--reveal-delay, 0ms);
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

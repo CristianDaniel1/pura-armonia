@@ -1,0 +1,14 @@
+<a
+  [href]="url"
+  target="_blank"
+  rel="noopener"
+  [attr.aria-label]="t().floatWhatsapp + ' ' + t().newTab"
+  [title]="t().floatWhatsapp"
+  class="fixed right-5 bottom-5 z-40 flex size-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-lg shadow-black/40 transition duration-300 hover:scale-110 sm:right-8 sm:bottom-8"
+>
+  <span
+    class="absolute inset-0 animate-ping rounded-full bg-[#25d366]/40 [animation-duration:2.5s]"
+    aria-hidden="true"
+  ></span>
+  <app-icon name="whatsapp" class="relative size-7" />
+</a>

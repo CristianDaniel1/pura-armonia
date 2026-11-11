@@ -1,0 +1,70 @@
+<section id="music" class="section bg-night-2">
+  <div
+    class="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-gold/40 to-transparent"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page">
+    <app-section-heading
+      [eyebrow]="t().music.eyebrow"
+      [title]="t().music.title"
+      [lead]="t().music.lead"
+    />
+
+    <!-- Video destacado -->
+    <div class="grid items-center gap-10 lg:grid-cols-12">
+      <div appReveal class="lg:col-span-8">
+        <app-video-player
+          [videoId]="featured.id"
+          [title]="featured.title"
+          [playLabel]="t().music.play"
+        />
+      </div>
+
+      <div appReveal="150" class="lg:col-span-4">
+        <p class="text-xs font-bold tracking-[0.25em] text-gold uppercase">
+          {{ t().music.featured }}
+        </p>
+        <h3 class="mt-3 text-5xl italic">{{ featured.title }}</h3>
+        <p class="mt-2 text-dim">Agrupación Pura Armonía · {{ featured.year }}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a [href]="featuredUrl" target="_blank" rel="noopener" class="btn btn-primary">
+            <app-icon name="youtube" class="size-5" />
+            {{ t().music.watchOn }}
+            <span class="sr-only">{{ t().newTab }}</span>
+          </a>
+          <a [href]="social.youtubeSubscribe" target="_blank" rel="noopener" class="btn btn-ghost">
+            {{ t().music.subscribe }}
+            <span class="sr-only">{{ t().newTab }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de videos -->
+    <div class="mt-20 md:mt-24">
+      <app-video-filters appReveal [active]="filter()" (changed)="selectFilter($event)" />
+
+      <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        @for (video of videos(); track video.id) {
+          <li>
+            <app-video-card [video]="video" />
+          </li>
+        }
+      </ul>
+
+      <div class="mt-14 flex flex-wrap justify-center gap-3">
+        @if (hasMore()) {
+          <button type="button" class="btn btn-ghost" (click)="showAll.update((v) => !v)">
+            {{ showAll() ? t().music.showLess : t().music.showMore }}
+          </button>
+        }
+        <a [href]="social.youtube" target="_blank" rel="noopener" class="btn btn-primary">
+          {{ t().music.channel }}
+          <span class="sr-only">{{ t().newTab }}</span>
+          <app-icon name="arrow" class="size-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

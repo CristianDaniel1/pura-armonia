@@ -1,13 +1,78 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>PuraArmonia</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Agrupación Pura Armonía · Cumbia boliviana en São Paulo</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Sitio oficial de la Agrupación Pura Armonía, con sabor: cumbia boliviana y música en vivo para bodas, quinceañeros, fiestas y eventos en São Paulo, Brasil."
+    />
+    <meta name="theme-color" content="#0a0b14" />
+
+    <!-- Redes sociales (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Agrupación Pura Armonía" />
+    <meta property="og:title" content="Agrupación Pura Armonía · Cumbia boliviana en São Paulo" />
+    <meta
+      property="og:description"
+      content="Música en vivo para todo tipo de evento social. Videoclips, contacto y contrataciones."
+    />
+    <meta property="og:image" content="images/band.jpg" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="images/band.jpg" />
+
+    <!-- Fuentes del título principal (las demás se cargan desde styles.css) -->
+    <link
+      rel="preload"
+      href="fonts/cormorant-garamond.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/cormorant-garamond-italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="fonts/great-vibes.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Agrupación Pura Armonía",
+        "alternateName": "Pura Armonía con sabor",
+        "genre": ["Cumbia boliviana", "Cumbia romántica"],
+        "image": "images/band.jpg",
+        "telephone": "+55 11 96773-7231",
+        "location": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+          }
+        },
+        "sameAs": [
+          "https://www.youtube.com/@puraarmonia",
+          "https://www.facebook.com/agrupacion.pura.armonia",
+          "https://www.instagram.com/agrupacionarmonia",
+          "https://www.tiktok.com/@gris_pura_armonia"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

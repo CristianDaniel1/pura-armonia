@@ -1,0 +1,57 @@
+<header
+  class="fixed inset-x-0 top-0 z-50 flex h-(--header-h) items-center border-b transition-colors duration-500"
+  [class]="
+    solid() ? 'border-line bg-night/85 backdrop-blur-xl' : 'border-transparent bg-transparent'
+  "
+>
+  <div class="container-page flex items-center justify-between gap-6">
+    <!-- Logo -->
+    <a href="#home" class="flex flex-col leading-none">
+      <span class="-mb-0.5 ml-0.5 font-script text-lg text-wine-bright">Agrupación</span>
+      <span class="font-display text-[1.6rem] font-semibold italic">Pura Armonía</span>
+    </a>
+
+    <!-- Navegación de escritorio -->
+    <nav class="hidden lg:block" [attr.aria-label]="t().nav.main">
+      <ul class="flex gap-1">
+        @for (link of links(); track link.id) {
+          <li>
+            <a
+              [href]="'#' + link.id"
+              class="group relative block px-3.5 py-2 text-[0.8125rem] font-semibold tracking-[0.12em] uppercase transition-colors hover:text-ivory"
+              [class]="active() === link.id ? 'text-ivory' : 'text-muted'"
+              [attr.aria-current]="active() === link.id ? 'location' : null"
+            >
+              {{ link.label }}
+              <span
+                class="absolute inset-x-3.5 bottom-0.5 h-px origin-center bg-gold transition-transform duration-500 ease-elegant"
+                [class]="active() === link.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'"
+                aria-hidden="true"
+              ></span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <app-language-switcher />
+      <a href="#contact" class="btn btn-primary hidden min-h-11 px-5 text-xs lg:inline-flex">{{
+        t().nav.cta
+      }}</a>
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center rounded-full border border-line-strong lg:hidden"
+        aria-haspopup="dialog"
+        aria-controls="mobile-menu"
+        [attr.aria-expanded]="menuOpen()"
+        [attr.aria-label]="t().nav.menu"
+        (click)="openMenu()"
+      >
+        <app-icon name="menu" class="size-5" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<app-mobile-menu [(open)]="menuOpen" [links]="links()" [active]="active()" />

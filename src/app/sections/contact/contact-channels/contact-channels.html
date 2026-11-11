@@ -1,0 +1,67 @@
+<div class="space-y-4">
+  <a
+    [href]="whatsappUrl"
+    target="_blank"
+    rel="noopener"
+    class="group flex items-center gap-5 rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-[#25d366]/60"
+  >
+    <span
+      class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#25d366]/15 text-[#25d366]"
+    >
+      <app-icon name="whatsapp" class="size-6" />
+    </span>
+    <span>
+      <span class="block text-xs font-bold tracking-[0.2em] text-dim uppercase">{{
+        t().contact.whatsapp
+      }}</span>
+      <span class="block text-lg font-semibold text-ivory">{{ band.whatsapp.display }}</span>
+      <span class="sr-only">{{ t().newTab }}</span>
+    </span>
+    <app-icon
+      name="arrow"
+      class="ml-auto size-5 text-dim transition group-hover:translate-x-1 group-hover:text-ivory"
+    />
+  </a>
+
+  <div class="flex items-center gap-5 rounded-2xl border border-line bg-surface/60 p-5">
+    <span
+      class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold"
+    >
+      <app-icon name="pin" class="size-6" />
+    </span>
+    <span>
+      <span class="block text-xs font-bold tracking-[0.2em] text-dim uppercase">{{
+        t().contact.location
+      }}</span>
+      <span class="block text-lg font-semibold text-ivory">{{ band.city }}</span>
+    </span>
+  </div>
+
+  <div class="rounded-2xl border border-line bg-surface/60 p-5">
+    <p class="mb-4 text-xs font-bold tracking-[0.2em] text-dim uppercase">
+      {{ t().contact.follow }}
+    </p>
+    <ul class="grid gap-1">
+      @for (social of socials; track social.name) {
+        <li>
+          <a
+            [href]="social.url"
+            target="_blank"
+            rel="noopener"
+            class="group flex items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-white/5"
+          >
+            <app-icon [name]="social.icon" class="size-5 text-gold" />
+            <span class="text-ivory/90"
+              ><span class="sr-only">{{ social.name }}: </span>{{ social.handle }}</span
+            >
+            <span class="sr-only">{{ t().newTab }}</span>
+            <app-icon
+              name="external"
+              class="ml-auto size-4 text-dim opacity-0 transition group-hover:opacity-100"
+            />
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+@if (visible()) {
+  <p [id]="errorId()" class="flex items-center gap-1.5 text-sm text-danger">
+    <span aria-hidden="true">⚠</span>
+    {{ message() }}
+  </p>
+}

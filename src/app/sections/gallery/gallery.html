@@ -1,0 +1,49 @@
+<section id="gallery" class="section bg-night-2">
+  <div class="container-page">
+    <div class="flex flex-col justify-between gap-x-6 md:flex-row md:items-end">
+      <app-section-heading [eyebrow]="t().gallery.eyebrow" [title]="t().gallery.title" />
+      <!-- La animación de entrada va en el contenedor para no pisar la transición del botón -->
+      <div appReveal class="-mt-4 mb-12 shrink-0 md:mt-0 md:mb-16">
+        <a [href]="photosUrl" target="_blank" rel="noopener" class="btn btn-ghost">
+          <app-icon name="facebook" class="size-4" />
+          {{ t().gallery.more }}
+          <span class="sr-only">{{ t().newTab }}</span>
+        </a>
+      </div>
+    </div>
+
+    <ul
+      class="grid auto-rows-[200px] grid-cols-2 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4"
+    >
+      @for (image of images; track image.src; let i = $index) {
+        <li [appReveal]="(i % 4) * 80" [class.col-span-2]="image.wide">
+          <button
+            type="button"
+            class="group relative size-full overflow-hidden rounded-xl"
+            [attr.aria-label]="t().gallery.open + ': ' + image.alt[i18n.lang()]"
+            (click)="openIndex.set(i)"
+          >
+            <img
+              [src]="image.src"
+              alt=""
+              loading="lazy"
+              class="size-full object-cover transition duration-700 ease-elegant group-hover:scale-110"
+            />
+            <span
+              aria-hidden="true"
+              class="absolute inset-0 bg-linear-to-t from-night/70 to-transparent opacity-60 transition group-hover:opacity-90"
+            ></span>
+            <span
+              aria-hidden="true"
+              class="absolute bottom-3 left-4 translate-y-2 text-left text-sm text-ivory opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+            >
+              {{ image.alt[i18n.lang()] }}
+            </span>
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-lightbox [images]="images" [(index)]="openIndex" />

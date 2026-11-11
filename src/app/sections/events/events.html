@@ -1,0 +1,22 @@
+<section id="events" class="section">
+  <div class="container-page">
+    <app-section-heading
+      [eyebrow]="t().events.eyebrow"
+      [title]="t().events.title"
+      [lead]="t().events.lead"
+      [center]="true"
+    />
+
+    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      @for (item of t().events.items; track item.icon; let i = $index) {
+        <li [appReveal]="(i % 3) * 100">
+          <app-event-card [icon]="item.icon" [title]="item.title" [text]="item.text" />
+        </li>
+      }
+    </ul>
+
+    <div class="mt-16">
+      <app-hiring-steps />
+    </div>
+  </div>
+</section>
